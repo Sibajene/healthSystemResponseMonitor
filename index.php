@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <h1>COVID-19 Health System Response Monitor </h1>
                     <hr class="divider-horizontal-blurry" />
-                      <p>yuiiooooooooo oooooooooooooooo o                  oooooo</p>
+                    <p>yuiioooooooooooooooooooooooooooooo</p>
                 </div>
             </div>
         </div>
