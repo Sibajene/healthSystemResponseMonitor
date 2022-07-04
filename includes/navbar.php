@@ -24,7 +24,7 @@
                   onMouseOver="this.style.backgroundColor='#D4AC0D'" onMouseOut="this.style.backgroundColor='#138D75'">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color:white;"onMouseOver="this.style.backgroundColor='#D4AC0D'"onMouseOut="this.style.backgroundColor='#138D75'">Provincies</a>
+          <a class="nav-link" href="province.php" style="color:white;"onMouseOver="this.style.backgroundColor='#D4AC0D'"onMouseOut="this.style.backgroundColor='#138D75'">Provincies</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" style="color:white;"onMouseOver="this.style.backgroundColor='#D4AC0D'"onMouseOut="this.style.backgroundColor='#138D75'">COVID-19</a>
@@ -33,7 +33,7 @@
           <a class="nav-link" href="#" style="color:white;"onMouseOver="this.style.backgroundColor='#D4AC0D'"onMouseOut="this.style.backgroundColor='#138D75'">Monitors</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color:white;"
+          <a class="nav-link" href="aboutus.php" style="color:white;"
           onMouseOver="this.style.backgroundColor='#D4AC0D'"
             onMouseOut="this.style.backgroundColor='#138D75'"
           >About Us</a>
@@ -77,7 +77,7 @@
       <input
         type="search"
         class="form-control rounded"
-        placeholder="Search"
+        placeholder="Search for a province"
         aria-label="Search"
         aria-describedby="search-addon"
       />

@@ -1,9 +1,23 @@
- <div class="container">
-   <h6 style="text-align: center;">Created and maintained by Sibajene Sikasukwe 2010268454</h6>
- </div>
-    <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Custom scripts -->
-    <script type="text/javascript"></script>
-  </body>
+
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; created by Sibajene Sikasukwe_2010268454</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+      </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+    </div>
+    <!-- End of Content Wrapper -->
+
+    
+</body>
+
 </html>
