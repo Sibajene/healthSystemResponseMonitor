@@ -6,7 +6,7 @@
   
     
     //fetch services
-    $province = mysqli_query($con,"SELECT * FROM province ORDER BY p_id DESC");
+    $town = mysqli_query($con,"SELECT * FROM town ORDER BY t_id DESC");
     
      //fetch settings
     $settings = mysqli_query($con,"SELECT * FROM settings");
@@ -21,7 +21,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Provincies - <?php echo $setting['site_name']; ?></title>
+<title>Towns - <?php echo $setting['site_name']; ?></title>
 <meta name="description" content="We Offer Import & Export assistance foreign businesses in transporting and selling their products in China, India and USA. We connect domestic companies to the international shipping services most suited for their business.">
 <!-- Stylesheets -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -108,16 +108,16 @@
     </div>
 
     <!-- Page Title -->
-    <section class="page-title" style="background-image: url(https://res.cloudinary.com/ecotuulecloud/image/upload/v1657473999/ecotuule/bg-2_l2nmee.jpg);">
+    <section class="page-title" style="background-image: url(https://res.cloudinary.com/ecotuulecloud/image/upload/v1657474000/ecotuule/bg-16_iltryz.jpg);">
         <div class="auto-container">
             <div class="content-box">
                 <div class="content-wrapper">
                     <div class="title">
-                        <h1>Our Provincies</h1>
+                        <h1>Our Towns</h1>
                     </div>
                     <ul class="bread-crumb clearfix">
                         <li><a href="index.php">Home</a></li>
-                        <li>Province</li>
+                        <li>Town</li>
                     </ul>
                 </div>                    
             </div>
@@ -127,7 +127,7 @@
          <section class="services-section style-two ">
         <div class="auto-container">
             <div class="sec-title text-center">
-                <h2>All Provincies</h2>
+                <h2>All Towns</h2>
             </div>  
         </div>
     </section>
@@ -149,17 +149,17 @@
       <div class="container pb-5">
           <div class="row ">
               <?php
-                        while($row=mysqli_fetch_array($province)){
+                        while($row=mysqli_fetch_array($town)){
                     ?>
               <div class="col-md-4 zoom pb-5">
                    
                     <div class="card-deck">
                         <div class="card">
                             <div class="card-body">
-                              <h5 class="card-title"><b><a href="single-province.php?p_id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></b></h5>
+                              <h5 class="card-title"><b><a href="single-town.php?t_id=<?php echo $row['t_id']; ?>"><?php echo $row['t_name']; ?></a></b></h5>
                             </div>
                             <div class="card-footer">
-                               <div class="link"><a href="single-province.php?p_id=<?php echo $row['p_id']; ?>" class="readmore-link"><i class="flaticon-up-arrow"></i>More Details</a></div>
+                               <div class="link"><a href="single-town.php?t_id=<?php echo $row['t_id']; ?>" class="readmore-link"><i class="flaticon-up-arrow"></i>More Details</a></div>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                 <div class="theme_carousel owl-theme owl-carousel">
 
                     <?php
-                        while($row=mysqli_fetch_array($province)){
+                        while($row=mysqli_fetch_array($town)){
                     ?>
                     <div class="col-lg-12 service-block">
                         <div class="inner-box">
@@ -193,7 +193,7 @@
                                 <div class="content">
                                     <div>
                                        
-                                        <h4><?php echo $row['p_name']; ?></h4>
+                                        <h4><?php echo $row['t_name']; ?></h4>
                                     </div>            
                                 </div>
                             </div>
@@ -227,38 +227,6 @@
             </div>
         </div>
     </section> -->
-
-        <!-- services php ends -->
-
-
-    <!-- Servcies section two -->
-    <section class="services-section-two style-two mx-30">
-        <div class="auto-container">
-            <div class="sec-title text-center">
-                <div class="sub-title">Value Added Services</div>
-                <h2>Cross country analyses</h2>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <img src="assets/images/resource/image-16.jpg" alt="">
-                            <div class="icon"><span class="flaticon-insurance"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <img src="assets/images/resource/image-17.jpg" alt="">
-                            <div class="icon"><span class="flaticon-import"></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-        </div>
-    </section>
-
 
 
     <!--Main Footer-->

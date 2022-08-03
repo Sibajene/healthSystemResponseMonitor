@@ -3,25 +3,35 @@
     error_reporting(0);
     include "conn.php";
 
-  
+    //fet id
+    $response_id = $_GET['response_id'];
+
+    //fetch blogs 
+    $response = mysqli_query($con,"SELECT * FROM response WHERE response_id=$response_id");
+    $fetch = mysqli_fetch_array($response);
+
+
+    //fetch recent post
+    $recent = mysqli_query($con,"SELECT * FROM response LIMIT 4");
+
+      //fetch category
+
     
-    //fetch services
-    $province = mysqli_query($con,"SELECT * FROM province ORDER BY p_id DESC");
     
-     //fetch settings
+    //fetch settings
     $settings = mysqli_query($con,"SELECT * FROM settings");
     $setting  = mysqli_fetch_array($settings);
 
-
-
+    
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Mirrored from st.ourhtmldemo.com/new/Transida2/blog-details.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Jan 2021 08:08:07 GMT -->
 <head>
 <meta charset="utf-8">
-<title>Provincies - <?php echo $setting['site_name']; ?></title>
+<title><?php echo $setting['site_name']; ?> - <?php echo $fetch['title']; ?></title>
 <meta name="description" content="We Offer Import & Export assistance foreign businesses in transporting and selling their products in China, India and USA. We connect domestic companies to the international shipping services most suited for their business.">
 <!-- Stylesheets -->
 <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -41,21 +51,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
-<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=601e75803d01430011c105c8&product=image-share-buttons' async='async'></script>
-
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=601e75803d01430011c105c8&product=image-share-buttons" async="async"></script>
 </head>
 
 <body>
 
 <div class="page-wrapper">
-    <!-- Preloader -->
-   
-
-   
-    <!-- End Main Header -->
+ 
+    <!-- Main Header -->
 <?php include "header.php"; ?>
-    <!-- Hidden Sidebar -->
+    <!-- End Main Header -->
 
+    <!-- Hidden Sidebar -->
     <section class="hidden-sidebar close-sidebar">
         <div class="wrapper-box">
             <div class="content-wrapper">
@@ -82,7 +89,20 @@
                     </div>                            
                 </div>
                 <!-- Contact Widget -->
-           
+               <!--<div class="contact-widget">
+                    <div class="icon-box">
+                        <div class="icon"><span class="flaticon-cursor"></span></div>
+                        <div class="text">Boat House, 152/21 City Road, <br> Hoxton, N1 6NG, UK.</div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><span class="flaticon-calling"></span></div>
+                        <div class="text"><strong>Phone</strong><a href="tel:(+61)3245689790">(+61) 324 56 789 & 790</a></div>
+                    </div>
+                    <div class="icon-box">
+                        <div class="icon"><span class="flaticon-mail"></span></div>
+                        <div class="text"><strong>Email</strong><a href="tel:(+61)32456789790">supportyou@transida.com</a></div>
+                    </div>
+                </div> -->
                 <!-- Link Btn -->
                 <div class="link-btn"><a href="#" class="theme-btn btn-style-one style-two"><span><i class="flaticon-up-arrow"></i>Purchase Our Theme </span></a></div>
             </div>
@@ -108,162 +128,92 @@
     </div>
 
     <!-- Page Title -->
-    <section class="page-title" style="background-image: url(https://res.cloudinary.com/ecotuulecloud/image/upload/v1657473999/ecotuule/bg-2_l2nmee.jpg);">
+    <section class="page-title" style="background-image: url(https://res.cloudinary.com/ecotuulecloud/image/upload/v1657473999/ecotuule/bg-17_aco3r1.jpg);">
+        <!--<div class="background-text">
+            <div data-parallax='{"x": 100}'>
+                <div class="text-1">transida</div>
+                <div class="text-2">transida</div>
+            </div>                
+        </div>-->
         <div class="auto-container">
             <div class="content-box">
                 <div class="content-wrapper">
-                    <div class="title">
-                        <h1>Our Provincies</h1>
-                    </div>
+                  
                     <ul class="bread-crumb clearfix">
                         <li><a href="index.php">Home</a></li>
-                        <li>Province</li>
+                        <li><a href="#">Response</a></li>
+                        <li><?php echo $fetch['title']; ?></li>
                     </ul>
                 </div>                    
             </div>
         </div>
     </section>
-    <!-- serivice from here -->
-         <section class="services-section style-two ">
+
+    <!-- News Section -->
+    <section class="news-section">
         <div class="auto-container">
-            <div class="sec-title text-center">
-                <h2>All Provincies</h2>
-            </div>  
-        </div>
-    </section>
-    
-    
-    
-    <!-- boostrap -->
-    <style>
-.zoom {
-    
- 
-}
-
-.zoom:hover {
-  transform: scale(1.02); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-</style>
-    
-      <div class="container pb-5">
-          <div class="row ">
-              <?php
-                        while($row=mysqli_fetch_array($province)){
-                    ?>
-              <div class="col-md-4 zoom pb-5">
-                   
-                    <div class="card-deck">
-                        <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title"><b><a href="single-province.php?p_id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></b></h5>
-                            </div>
-                            <div class="card-footer">
-                               <div class="link"><a href="single-province.php?p_id=<?php echo $row['p_id']; ?>" class="readmore-link"><i class="flaticon-up-arrow"></i>More Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-              </div>
-              <?php  } ?>
-          </div>
-      </div>
-    
-    <!-- boostrap ends -->
-
-
-    <!-- services php -->
-
-        <!--<section class="services-section style-two">
-        <div class="auto-container">
-            <div class="sec-title text-center">
-                <div class="sub-title">Main Services</div>
-                <h2>Moving Your Products Across <br> All Borders</h2>
-            </div>
             <div class="row">
-                <div class="theme_carousel owl-theme owl-carousel">
-
-                    <?php
-                        while($row=mysqli_fetch_array($province)){
-                    ?>
-                    <div class="col-lg-12 service-block">
+                <div class="col-lg-8">
+                    <div class="news-block-four blog-single-post">
                         <div class="inner-box">
-                            <div class="">
-                                <img src="assets/images/resource/image-12.jpg" alt="">
-                                <div class="content">
-                                    <div>
-                                       
-                                        <h4><?php echo $row['p_name']; ?></h4>
-                                    </div>            
+                            <div class="image mb-5"><img src=" " alt=""></div>
+                            <div class="lower-content">
+                                <div class="top-content">
+                                    <div class="date"><?php echo $fetch['date_time'];  ?></div>
+                                    <h3><?php echo $fetch['citizen_name'];  ?></h3>
+                                </div>  
+                                 <div class="text mb-5">
+                                    <p><?php echo $fetch['citizen_address'];  ?></p>
+                                    
                                 </div>
+                        
+                        
                             </div>
-                           
-                            <div class="overlay" style="background-image: url(assets/images/resource/image-12-2.jpg);">
-                                <div>
-                                    <div class="content">
-                                        <div class="icon"><span class="flaticon-airplane"></span></div>
+                        </div>
+                    </div>
+
+                </div>
+                <aside class="col-lg-4 sidebar">
+                    <div class="blog-sidebar style-two">
+                        <div class="post-share-btn">
+                                        <span class="hint">Share This Post <span class="flaticon-share"></span></span>
+                                        <div class="social-links-wrapper">
+                                            
+                                            <div class="social-links">
+                                                <span class="pr-2"><a  href="http://www.facebook.com/sharer.php?u=<?php echo $_SERVER['HTTP_HOST']; ?>/blog-details.php?id=<?= $fetch['id']; ?>"><span class="fab fa-facebook-f"></span></a></span>
+                                                <span class="pr-2"><a href="http://twitter.com/share?text=<?= $fetch["title"]; ?>&url=<?php echo $_SERVER['HTTP_HOST']; ?>/blog-details.php?id=<?= $fetch['id']; ?>"><span class="fab fa-twitter"></span></a></span>
+                                               <span> <a href="mailto:?subject=I wanted you to see this Article&amp;body=Check out this Property <?php echo $_SERVER['HTTP_HOST']; ?>/blog-details.php?id=<?= $fetch['id']; ?>"><span class="fab fa fa-envelope"></span></a></span>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="text"></div>
-                                    <div class="link"><a href="#" class="readmore-link"><i class="flaticon-up-arrow"></i>More Details</a></div>
+                        <div class="widget news-widget-two">
+                            <h4 class="widget_title">Recent Post</h4>
+                            <div class="wrapper-box">
+                                <?php
+                                    while($row=mysqli_fetch_array($recent)){
+                                ?>
+                                <div class="post" style="background-image: url(assets/images/resource/news-26.jpg);">
+                                    <div class="content">
+                                        <div class="date"><i class="far fa-calendar"></i> <?php echo $row['date_time']; ?></div>
+                                        <h4><a href="response-details.php?response_id=<?php echo $row['response_id']; ?>"><?php echo $row['citizen_name']; ?></a></h4>
+                                    </div>
                                 </div>
+                           <?php  } ?>
                             </div>
                         </div>
                     </div>
-              
-                  <?php  } ?>
-                </div>
+                </aside>
             </div>
-            <div class="cta-section-two">
-                <div class="wrapper-box">
-                    <div class="icon"><img src="assets/images/resource/image-29.jpg" alt=""></div>
-                    <div class="text">
-                        <h4>Our Effective and Affordable Pricing Plans</h4>
-                        <p>we assure you a super affordable price with word class services.</p>
-                    </div>
-                    <div class="link">
-                        <a href="contact.php" class="theme-btn btn-style-one"><span><i class="flaticon-up-arrow"></i>Enquire Now</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-        <!-- services php ends -->
-
-
-    <!-- Servcies section two -->
-    <section class="services-section-two style-two mx-30">
-        <div class="auto-container">
-            <div class="sec-title text-center">
-                <div class="sub-title">Value Added Services</div>
-                <h2>Cross country analyses</h2>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <img src="assets/images/resource/image-16.jpg" alt="">
-                            <div class="icon"><span class="flaticon-insurance"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 service-block-two">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <img src="assets/images/resource/image-17.jpg" alt="">
-                            <div class="icon"><span class="flaticon-import"></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
         </div>
     </section>
 
 
 
-    <!--Main Footer-->
+  <!--Main Footer-->
    <?php include "footer.php"; ?>
 <!--End pagewrapper-->
+
 
 <!--Scroll to top-->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-right-arrow-6"></span></div>
@@ -289,7 +239,6 @@
 
 
 </body>
-
 
 </html>
 
