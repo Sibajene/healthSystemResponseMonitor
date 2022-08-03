@@ -61,7 +61,7 @@
                                         <div>
                                             <div class="text"><strong>Mon - Friday</strong>08.00 am to 9.00pm</div>
                                             <div class="text"><strong>Saturday</strong>10.00 am to 4.00pm</div>
-                                            <div class="text"><strong>Sunday</strong> 10.00 am to 4.00pm</div>
+                                            <div class="text"><strong>Sunday</strong> 10.00 am to 12.00am</div>
                                         </div>                                    
                                     </div>
                                 </div>
@@ -75,8 +75,8 @@
                                     <h4 class="widget_title">Useful Links</h4>
                                     <div class="widget-content">
                                         <ul class="list">
-                                            <li><a href="about.php">About Company</a></li>
-                                            <li><a href="contact.php">Get In Touch</a></li>
+                                            <li><a href="about.php">About health System Response Monitor</a></li>
+                                            <li><a href="contact.php">Get Covid-19 Updates</a></li>
                                             <li><a href="response.php">Response</a></li>
                                         </ul>
                                     </div>

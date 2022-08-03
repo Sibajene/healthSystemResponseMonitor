@@ -4,36 +4,32 @@
     //fetch settings
     $settings = mysqli_query($con,"SELECT * FROM settings");
     $setting  = mysqli_fetch_array($settings);
+
+
+    if(isset($_POST['submit'])){
+
+        $response_id = $_POST['response_id'];
+        $citizen_name = mysqli_real_escape_string($con, $_POST['citizen_name']);
+        $citizen_address = mysqli_real_escape_string($con, $_POST['citizen_address']);
+        $citizen_phone = mysqli_real_escape_string($con, $_POST['citizen_phone']);
+        $p_idd = $_POST['p_idd'];
+        $d_idd = $_POST['d_idd'];
+        $t_idd = $_POST['t_idd'];
+        $date_time = $_POST['date_time'];
+     
+        $insert = mysqli_query($con, "INSERT INTO `response`(response_id, citizen_name, citizen_address, citizen_phone, p_idd, d_idd, t_idd, date_time) VALUES('$response_id', '$citizen_name','$citizen_address','$citizen_phone','$p_idd','$d_idd','$t_idd','$date_time')") or die('query failed');
+     
+        if($insert){
+           $message[] = 'Response made successfully!';
+        }else{
+           $message[] = 'Response failed';
+        }
+     
+     }
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-<meta charset="utf-8">
 <title>Contact Us - <?php echo $setting['site_name']; ?></title>
-<meta name="description" content="We Offer Import & Export assistance foreign businesses in transporting and selling their products in China, India and USA. We connect domestic companies to the international shipping services most suited for their business.">
-<!-- Stylesheets -->
-<link href="assets/css/bootstrap.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
-<!-- Responsive File -->
-<link href="assets/css/responsive.css" rel="stylesheet">
-<!-- Color File -->
-<link href="assets/css/color.css" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;family=Yantramanav:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
-
-<link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-<link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
-
-<!-- Responsive -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
-<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=601e75803d01430011c105c8&product=image-share-buttons' async='async'></script>
-
 </head>
 
 <body>
@@ -169,12 +165,12 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="sec-title">
-                                <div class="sub-title">Get a Quote</div>
-                                <h2>Start Your Shipping</h2>
+                                <div class="sub-title">Get Covid-19 Updates</div>
+                                <h2>Always in time</h2>
                             </div>
                             <!--<div class="text">Indignation and dislike men who are so beguiled & demoralized by <br> the charms of pleasure of the moment.</div>
                             <div class="link">-->
-                                <a href="#cform" class="theme-btn btn-style-one"><span><i class="flaticon-up-arrow"></i>Get A Quote</span></a>
+                                <a href="#cform" class="theme-btn btn-style-one"><span><i class="flaticon-up-arrow"></i>Covid Updates</span></a>
                             </div>
                     </div>
                 </div>
@@ -186,13 +182,20 @@
     <section class="contact-form-section" id="cform">
         <div class="auto-container">
             <div class="sec-title text-center">
-                <div class="sub-title">Drop a line</div>
+                <div class="sub-title">Response</div>
                 <h2>We’re Always Here for You</h2>
-                <div class="text">Please do not hesitate to contact us if you require further information about our logisitc service.</div>
+                <div class="text">Please do not hesitate to tell us about Covid-19 responses in your area</div>
             </div>
             <!--Contact Form-->
             <div class="contact-form">
-                <form method="post" action="thanks.php" id="contact-form">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="contact-form">
+                <?php 
+                        if(isset($message)){
+                            foreach($message as $message){
+                            echo '<p class="message">'.$message.'</p>';
+                            }
+                        }
+                    ?>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <input type="text" name="name" value="" placeholder="Your Name" required>
@@ -201,10 +204,8 @@
                             <input type="text" name="phone" value="" placeholder="Phone Number" required>
                         </div>                        
                         <div class="form-group col-md-12">
-                            <input type="text" name="email" value="" placeholder="Your Email" required>
-                        </div>                        
-                                              
-                                              
+                            <input type="datetime-local" name="date" required>
+                        </div>                                     
                         <div class="form-group col-md-12">
                             <textarea name="message" placeholder="Message"></textarea>
                         </div>                        
