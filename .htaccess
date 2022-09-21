@@ -1,3 +1,0 @@
-#This is 404 error page 
-
-ErrorDocument 404 http://localhost/healthSystemResponseMonitor/404.php
